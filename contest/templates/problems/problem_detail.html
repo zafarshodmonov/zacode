@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ problem.title }} ({{ problem.index }})</title>
+</head>
+<body>
+    <h1>{{ problem.index }}. {{ problem.title }}</h1>
+    <p><strong>Time Limit:</strong> {{ problem.time_limit_ms }} ms</p>
+    <p><strong>Memory Limit:</strong> {{ problem.memory_limit_mb }} MB</p>
+
+    <h2>Description</h2>
+    <p>{{ problem.statement|linebreaks }}</p>
+
+    <h3>Input</h3>
+    <p>{{ problem.input_spec|linebreaks }}</p>
+
+    <h3>Output</h3>
+    <p>{{ problem.output_spec|linebreaks }}</p>
+
+    {% if problem.constraints %}
+    <h3>Constraints</h3>
+    <p>{{ problem.constraints|linebreaks }}</p>
+    {% endif %}
+
+    {% if problem.note %}
+    <h3>Note</h3>
+    <p>{{ problem.note|linebreaks }}</p>
+    {% endif %}
+
+    <h3>Examples</h3>
+    <ul>
+    {% for example in problem.examples %}
+        <li>
+            <pre><strong>Input:</strong>
+{{ example.input }}</pre>
+            <pre><strong>Output:</strong>
+{{ example.output }}</pre>
+        </li>
+    {% endfor %}
+    </ul>
+
+</body>
+</html>

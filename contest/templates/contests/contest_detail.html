@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ contest.title }}</title>
+</head>
+<body>
+    <h1>Contest: {{ contest.title }}</h1>
+    <p>{{ contest.description|linebreaks }}</p>
+    <p><strong>Start:</strong> {{ contest.start_time }}</p>
+    <p><strong>End:</strong> {{ contest.end_time }}</p>
+    <p><strong>Duration:</strong> {{ contest.duration }} minutes</p>
+
+    <h2>Problems</h2>
+    <ul>
+    {% for problem in problems %}
+        <li>
+            <a href="{% url 'problem_detail' contest.id problem.index %}">
+                {{ problem.index }}. {{ problem.title }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
