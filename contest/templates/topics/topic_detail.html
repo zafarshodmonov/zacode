@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ topic.title }}</h2>
+
+<p>{{ topic.description }}</p>
+
+<h3>Problems ({{ problems.count }})</h3>
+
+<ul>
+    {% for problem in problems %}
+        <li>
+            {{ problem.title }}
+        </li>
+    {% empty %}
+        <li>No problems for this topic.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

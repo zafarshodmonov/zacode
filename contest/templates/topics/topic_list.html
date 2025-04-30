@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>All Topics</h2>
+
+<ul>
+    {% for topic in topics %}
+        <li>
+            <a href="{% url 'topic_detail' topic.pk %}">
+                {{ topic.title }}
+            </a>
+        </li>
+    {% empty %}
+        <li>No topics available.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

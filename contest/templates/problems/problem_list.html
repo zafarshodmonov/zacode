@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>All Problems</h2>
+
+    <form method="get" action="{% url 'problem_list' %}">
+        <input type="text" name="q" placeholder="Search problems..." value="{{ query }}">
+        
+        <select name="topic">
+            <option value="">All Topics</option>
+            {% for topic in topics %}
+                <option value="{{ topic.id }}" {% if topic.id|stringformat:"s" == selected_topic_id %}selected{% endif %}>
+                    {{ topic.title }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+        {% for problem in problems %}
+            <li>
+                <a href="{% url 'problem_detail' contest_id=problem.contest.id problem_index=problem.index %}">
+                    {{ problem.contest.title }} - {{ problem.index }}. {{ problem.title }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No problems found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

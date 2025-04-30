@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Coding Site{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0 20px;
+        }
+        header, footer {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        main {
+            margin: 20px 0;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="/">Welcome to ZaCode! 🚀</a></h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/problems/">Problems</a>
+            <a href="/topics/">Topics</a>
+            <a href="/contests/">Contests</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Sahifaning o'ziga xos qismi shu yerga keladi -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ZaCode Site. All rights reserved.</p>
+    </footer>
+</body>
+</html>

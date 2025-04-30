@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ problem.title }} ({{ problem.index }})</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
     <h1>{{ problem.index }}. {{ problem.title }}</h1>
     <p><strong>Time Limit:</strong> {{ problem.time_limit_ms }} ms</p>
     <p><strong>Memory Limit:</strong> {{ problem.memory_limit_mb }} MB</p>
@@ -40,5 +35,4 @@
     {% endfor %}
     </ul>
 
-</body>
-</html>
+{% endblock %}
