@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Problem, Contest, Topic
-from .forms import ProblemForm
 
 def problem_detail(request, contest_id, problem_index):
     problem = get_object_or_404(Problem, contest__id=contest_id, index=problem_index.upper())
