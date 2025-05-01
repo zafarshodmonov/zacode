@@ -1,5 +1,12 @@
 from django.contrib import admin
-from .models import Contest, Problem, Topic
+from .models import Contest, Problem, Topic, TestCase
+
+
+@admin.register(TestCase)
+class TestCaseAdmin(admin.ModelAdmin):
+    list_display = ['problem', 'input_data', 'expected_output']
+    search_fields = ['problem__title']
+    list_filter = ['problem__contest']
 
 @admin.register(Contest)
 class ContestAdmin(admin.ModelAdmin):

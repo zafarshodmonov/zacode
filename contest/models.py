@@ -56,5 +56,17 @@ class Problem(models.Model):
             return self.difficulty_origin
         
 
-
+class TestCase(models.Model):
+    CATEGORY_CHOICES = [
+        ('sample', 'Sample'),
+        ('handmade', 'Handmade'),
+        ('random', 'Random'),
+        ('extreme', 'Extreme'),
+        ('custom', 'Custom'),
+    ]
+    
+    problem = models.ForeignKey(Problem, on_delete=models.CASCADE, related_name='testcases')
+    input_data = models.TextField()
+    expected_output = models.TextField()
+    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='handmade')
 

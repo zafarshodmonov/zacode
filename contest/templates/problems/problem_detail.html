@@ -1,38 +1,53 @@
 {% extends "base.html" %}
+
 {% block content %}
-    <h1>{{ problem.index }}. {{ problem.title }}</h1>
-    <p><strong>Time Limit:</strong> {{ problem.time_limit_ms }} ms</p>
-    <p><strong>Memory Limit:</strong> {{ problem.memory_limit_mb }} MB</p>
+<div class="problem-container" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+    <h1 style="font-size: 28px; margin-bottom: 10px;">{{ problem.index }}. {{ problem.title }}</h1>
 
-    <h2>Description</h2>
-    <p>{{ problem.statement|linebreaks }}</p>
+    <div style="margin-bottom: 20px;">
+        <p><strong>Time Limit:</strong> {{ problem.time_limit_ms }} ms</p>
+        <p><strong>Memory Limit:</strong> {{ problem.memory_limit_mb }} MB</p>
+    </div>
 
-    <h3>Input</h3>
-    <p>{{ problem.input_spec|linebreaks }}</p>
+    <section style="margin-bottom: 30px;">
+        <h2 style="font-size: 22px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Description</h2>
+        <p style="margin-top: 10px;">{{ problem.statement|linebreaks }}</p>
+    </section>
 
-    <h3>Output</h3>
-    <p>{{ problem.output_spec|linebreaks }}</p>
+    <section style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px;">Input</h3>
+        <p>{{ problem.input_spec|linebreaks }}</p>
+
+        <h3 style="font-size: 20px; margin-top: 20px;">Output</h3>
+        <p>{{ problem.output_spec|linebreaks }}</p>
+    </section>
 
     {% if problem.constraints %}
-    <h3>Constraints</h3>
-    <p>{{ problem.constraints|linebreaks }}</p>
+    <section style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px;">Constraints</h3>
+        <p>{{ problem.constraints|linebreaks }}</p>
+    </section>
     {% endif %}
 
     {% if problem.note %}
-    <h3>Note</h3>
-    <p>{{ problem.note|linebreaks }}</p>
+    <section style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px;">Note</h3>
+        <p>{{ problem.note|linebreaks }}</p>
+    </section>
     {% endif %}
 
-    <h3>Examples</h3>
-    <ul>
-    {% for example in problem.examples %}
-        <li>
-            <pre><strong>Input:</strong>
+    <section style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px;">Examples</h3>
+        <ul style="list-style-type: none; padding: 0;">
+            {% for example in problem.examples %}
+            <li style="background: #f8f9fa; padding: 15px; margin-bottom: 10px; border-radius: 5px;">
+                <pre style="background: #e9ecef; padding: 10px; overflow-x: auto;"><strong>Input:</strong>
 {{ example.input }}</pre>
-            <pre><strong>Output:</strong>
+                <pre style="background: #e9ecef; padding: 10px; overflow-x: auto;"><strong>Output:</strong>
 {{ example.output }}</pre>
-        </li>
-    {% endfor %}
-    </ul>
-
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
 {% endblock %}
