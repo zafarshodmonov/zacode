@@ -1,19 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Contest: {{ contest.title }}</h1>
-    <p>{{ contest.description|linebreaks }}</p>
-    <p><strong>Start:</strong> {{ contest.start_time }}</p>
-    <p><strong>End:</strong> {{ contest.end_time }}</p>
-    <p><strong>Duration:</strong> {{ contest.duration }} minutes</p>
+<!-- templates/contests/contest_detail.html -->
 
-    <h2>Problems</h2>
-    <ul>
+<h1>{{ contest.title }}</h1>
+
+<p><strong>Description:</strong> {{ contest.description }}</p>
+
+<p><strong>Start Time:</strong> {{ contest.start_time }}</p>
+
+<p><strong>End Time:</strong> {{ contest.end_time }}</p>
+
+<p><strong>Duration:</strong> {{ dur_time }}</p>
+
+<p><strong>Problems Count:</strong> {{ contest.problems_count }}</p>
+
+<p><strong>Division:</strong> {{ contest.get_division_display }}</p>
+
+<p><strong>Rated:</strong> {{ contest.rated|yesno:"Yes,No" }}</p>
+
+<p><strong>Visibility:</strong> {{ contest.get_visibility_display }}</p>
+
+<p><strong>Status:</strong> 
+    {% if contest.is_active %}
+        Active
+    {% else %}
+        Inactive
+    {% endif %}
+</p>
+
+<p><strong>Created At:</strong> {{ contest.created_at }}</p>
+<p><strong>Updated At:</strong> {{ contest.updated_at }}</p>
+
+<hr>
+
+<h2>Problems:</h2>
+<ul>
     {% for problem in problems %}
-        <li>
-            <a href="{% url 'problem_detail' contest.id problem.index %}">
-                {{ problem.index }}. {{ problem.title }}
-            </a>
-        </li>
+        <li><a href="{% url 'problem_detail' contest.id problem.index %}">
+            {{ problem.index }}. {{ problem.title }}
+        </a></li>
+    {% empty %}
+        <li>No problems yet.</li>
     {% endfor %}
-    </ul>
+</ul>
+
 {% endblock %}

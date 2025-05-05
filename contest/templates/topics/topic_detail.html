@@ -3,14 +3,14 @@
 {% block content %}
 <h2>{{ topic.title }}</h2>
 
-<p>{{ topic.description }}</p>
-
 <h3>Problems ({{ problems.count }})</h3>
 
 <ul>
     {% for problem in problems %}
         <li>
-            {{ problem.title }}
+            <a href="{% url 'problem_detail' contest_id=problem.contest.id problem_index=problem.index %}">
+                {{ problem.title }}
+            </a>
         </li>
     {% empty %}
         <li>No problems for this topic.</li>

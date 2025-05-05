@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     # Matches the root URL ("/") and calls the 'home' view
-    path('', views.base, name='base'),
+    path('', views.home, name='home'),  # Home sahifa
     path('admin/', admin.site.urls),
     path('problems/', views.problem_list, name='problem_list'),
     path('contests/', views.contest_list, name='contest_list'),
