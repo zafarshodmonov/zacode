@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Solutions for: {{ problem.title }}</h1>
+        <p>{{ problem.description }}</p>
+
+        <h2>Available Solutions:</h2>
+        <ul>
+            {% for solution in solutions %}
+                <li>
+                    <strong>Language:</strong> {{ solution.language }}<br>
+                    <strong>Code:</strong>
+                    <pre>{{ solution.code }}</pre>
+                    {% if solution.explanation %}
+                        <strong>Explanation:</strong> {{ solution.explanation }}
+                    {% endif %}
+                    <hr>
+                </li>
+            {% empty %}
+                <li>No solutions yet for this problem.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

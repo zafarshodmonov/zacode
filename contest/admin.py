@@ -1,7 +1,7 @@
 # contest/admin.py
 
 from django.contrib import admin
-from .models import Contest, Problem, Topic, TestCase
+from .models import Contest, Problem, Topic, TestCase, Solution
 
 @admin.register(Contest)
 class ContestAdmin(admin.ModelAdmin):
@@ -55,3 +55,9 @@ class TestCaseAdmin(admin.ModelAdmin):
     def short_output(self, obj):
         return (obj.expected_output[:50] + '...') if len(obj.expected_output) > 50 else obj.expected_output
     short_output.short_description = "Output (short)"
+
+@admin.register(Solution)
+class SolutionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'problem', 'language', 'created_at')
+    list_filter = ('language',)
+    search_fields = ('problem__title', 'language')

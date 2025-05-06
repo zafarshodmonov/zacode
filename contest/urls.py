@@ -12,4 +12,5 @@ urlpatterns = [
     path('topics/<int:pk>/', views.topic_detail, name='topic_detail'),
     path('contests/<int:contest_id>/', views.contest_detail, name='contest_detail'),
     path('contests/<int:contest_id>/<str:problem_index>/', views.problem_detail, name='problem_detail'),
+    path('problems/<int:problem_id>/solutions/', views.solution_list, name='solution_list'),
 ]

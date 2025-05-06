@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
-from .models import Problem, Contest, Topic
+from .models import Problem, Contest, Topic, Solution
 
 def home(request):
     latest_contest = Contest.objects.order_by('-created_at').first()
@@ -70,7 +70,10 @@ def topic_detail(request, pk):
     problems = Problem.objects.filter(topics=topic)
     return render(request, 'topics/topic_detail.html', {'topic': topic, 'problems': problems})
 
-
+def solution_list(request, problem_id):
+    problem = get_object_or_404(Problem, id=problem_id)
+    solutions = problem.solutions.all()
+    return render(request, 'solution_list.html', {'problem': problem, 'solutions': solutions})
 
 
 
