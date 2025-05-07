@@ -5,9 +5,11 @@ from .models import Problem
 from contests.models import Contest
 from topics.models import Topic
 
-def problem_detail(request, contest_id, problem_index):
-    problem = get_object_or_404(Problem, contest__id=contest_id, index=problem_index.upper())
-    return render(request, 'problems/problem_detail.html', {'problem': problem})
+def problem_detail(request, problem_id):
+    problem = get_object_or_404(Problem, id=problem_id)
+    # topics
+    topics = problem.topics.all()
+    return render(request, 'problem_detail.html', {'problem': problem, 'topics': topics})
 
 def problem_list(request):
     query = request.GET.get('q', '')
@@ -31,4 +33,4 @@ def problem_list(request):
         'topics': topics,
         'selected_topic_id': topic_id,
     }
-    return render(request, 'problems/problem_list.html', context)
+    return render(request, 'problem_list.html', context)

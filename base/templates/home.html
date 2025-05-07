@@ -18,7 +18,7 @@
             <ul>
                 {% for problem in latest_contest.problems.all %}
                     <li>
-                        <a href="{% url 'problem_detail' latest_contest.id problem.index %}">
+                        <a href="{% url 'problems:problem_detail' problem.id %}">
                             {{ problem.index }}. {{ problem.title }}
                         </a>
                     </li>

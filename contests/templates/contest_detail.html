@@ -36,7 +36,7 @@
 <h2>Problems:</h2>
 <ul>
     {% for problem in problems %}
-        <li><a href="{% url 'problem_detail' contest.id problem.index %}">
+        <li><a href="{% url 'problems:problem_detail' problem.id %}">
             {{ problem.index }}. {{ problem.title }}
         </a></li>
     {% empty %}

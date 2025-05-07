@@ -7,7 +7,7 @@ def contest_detail(request, contest_id):
     contest = get_object_or_404(Contest, id=contest_id)
     problems = contest.problems.all().order_by('index')
     dur_time = contest.end_time - contest.start_time
-    return render(request, 'contests/contest_detail.html', {
+    return render(request, 'contest_detail.html', {
         'contest': contest,
         'problems': problems,
         'dur_time': str(dur_time),
@@ -16,6 +16,6 @@ def contest_detail(request, contest_id):
 
 def contest_list(request):
     contests = Contest.objects.all().order_by('-start_time')
-    return render(request, 'contests/contest_list.html', {
+    return render(request, 'contest_list.html', {
         'contests': contests,
     })

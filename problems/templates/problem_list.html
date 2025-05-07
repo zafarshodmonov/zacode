@@ -2,7 +2,7 @@
 {% block content %}
     <h2>All Problems</h2>
 
-    <form method="get" action="{% url 'problem_list' %}">
+    <form method="get" action="{% url 'problems:problem_list' %}">
         <input type="text" name="q" placeholder="Search problems..." value="{{ query }}">
         
         <select name="topic">
@@ -20,8 +20,8 @@
     <ul>
         {% for problem in problems %}
             <li>
-                <a href="{% url 'problem_detail' contest_id=problem.contest.id problem_index=problem.index %}">
-                    {{ problem.contest.title }} - {{ problem.index }}. {{ problem.title }}
+                <a href="{% url 'problems:problem_detail' problem.id %}">
+                    {{ problem.id }}. {{ problem.title }}
                 </a>
             </li>
         {% empty %}

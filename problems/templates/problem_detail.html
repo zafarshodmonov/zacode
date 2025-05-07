@@ -36,6 +36,7 @@
     </section>
     {% endif %}
 
+    
     <section style="margin-bottom: 30px;">
         <h3 style="font-size: 20px;">Examples</h3>
         <ul style="list-style-type: none; padding: 0;">
@@ -47,6 +48,28 @@
 {{ example.output }}</pre>
             </li>
             {% endfor %}
+        </ul>
+    </section>
+
+    <section style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px;">Topics</h3>
+        <ul style="list-style-type: none; padding: 0;">
+            {% for topic in topics %}
+            <li style="background: #f8f9fa; padding: 10px; margin-bottom: 5px; border-radius: 5px;">
+                <a href="{% url 'topics:topic_detail' topic.id %}" style="text-decoration: none; color: #007bff;">{{ topic }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px;">Difficulty</h3>
+        <ul style="list-style-type: none; padding: 0;">
+            
+            <li style="background: #f8f9fa; padding: 10px; margin-bottom: 5px; border-radius: 5px;">
+                {{ problem.difficulty_origin }}
+                
+            </li>
+           
         </ul>
     </section>
 </div>

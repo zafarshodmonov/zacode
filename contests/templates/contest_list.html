@@ -4,10 +4,12 @@
     <ul>
     {% for contest in contests %}
         <li>
-            <a href="{% url 'contest_detail' contest.id %}">
+            <a href="{% url 'contests:contest_detail' contest.id %}">
                 {{ contest.title }} ({{ contest.start_time|date:"Y-m-d H:i" }})
             </a>
         </li>
+    {% empty %}
+        <li>No contests available.</li>
     {% endfor %}
     </ul>
 {% endblock %}

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'solutions',
     'topics',
     'contests',
+    'base',
 ]
 
 MIDDLEWARE = [
